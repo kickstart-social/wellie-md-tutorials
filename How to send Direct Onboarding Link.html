@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Send Onboarding Link — Staff Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F2240;
+    --teal: #1A6B8E;
+    --teal-light: #E8F4F8;
+    --green: #1A8A5A;
+    --green-light: #E6F7F0;
+    --gold: #C8860A;
+    --gold-light: #FEF6E4;
+    --red: #C0392B;
+    --red-light: #FDEDEC;
+    --gray: #64748B;
+    --border: #E2E8F0;
+    --bg: #F7F9FC;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--navy);
+    padding: 48px 24px 64px;
+    min-width: 680px;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--navy);
+    color: white;
+    padding: 6px 18px 6px 12px;
+    border-radius: 30px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-bottom: 16px;
+  }
+  .brand-dot {
+    width: 8px; height: 8px;
+    background: #4ADE80;
+    border-radius: 50%;
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+  .header h1 span { color: var(--teal); }
+  .header p {
+    color: var(--gray);
+    margin-top: 8px;
+    font-size: 0.95rem;
+  }
+
+  /* FLOW CONTAINER */
+  .flow {
+    max-width: 620px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* STEP CARD */
+  .step-card {
+    width: 100%;
+    background: var(--white);
+    border-radius: 16px;
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(15,34,64,0.06);
+    position: relative;
+  }
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border-bottom: 1.5px solid var(--border);
+  }
+
+  .step-num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .step-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--navy);
+    flex: 1;
+  }
+
+  .step-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  .step-body {
+    padding: 16px 20px;
+  }
+
+  .step-body p {
+    font-size: 0.88rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* SCREENSHOT MOCKUP */
+  .mockup {
+    margin-top: 12px;
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 0.82rem;
+    color: var(--navy);
+  }
+
+  .mockup-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dot-row { display: flex; gap: 5px; }
+  .dot-r { width: 10px; height: 10px; border-radius: 50%; background: #FC605C; }
+  .dot-y { width: 10px; height: 10px; border-radius: 50%; background: #FDBC40; }
+  .dot-g { width: 10px; height: 10px; border-radius: 50%; background: #34C749; }
+  .url-bar {
+    flex: 1;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 0.78rem;
+    font-family: 'DM Mono', monospace;
+    color: var(--teal);
+    font-weight: 500;
+  }
+
+  .table-mock {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+  }
+  .table-mock th {
+    background: var(--navy);
+    color: white;
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.3px;
+  }
+  .table-mock td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    color: var(--navy);
+  }
+  .table-mock tr:last-child td { border-bottom: none; }
+  .table-mock tr:nth-child(even) td { background: #F8FAFC; }
+  .name-link { color: var(--teal); font-weight: 600; }
+  .approved { background: #D1FAE5; color: #065F46; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; }
+  .action-icons { display: flex; gap: 8px; align-items: center; }
+  .icon-btn {
+    width: 28px; height: 28px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    cursor: pointer;
+    background: white;
+  }
+  .icon-btn.highlight {
+    border-color: var(--teal);
+    background: var(--teal-light);
+  }
+
+  .tooltip-mock {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--navy);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    margin-top: 8px;
+  }
+
+  .success-mock {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: white;
+    border: 1.5px solid #A7F3D0;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-top: 12px;
+  }
+  .success-icon {
+    width: 28px; height: 28px;
+    background: var(--green-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .success-text strong { display: block; font-size: 0.85rem; color: var(--green); }
+  .success-text span { font-size: 0.8rem; color: var(--gray); }
+
+  .url-mock {
+    margin-top: 12px;
+    background: var(--teal-light);
+    border: 1.5px solid #BAE6F5;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--teal);
+    font-weight: 500;
+    word-break: break-all;
+  }
+
+  .form-mock {
+    margin-top: 12px;
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .form-mock h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+  .form-field {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 0.75rem;
+    color: #94A3B8;
+    background: #F8FAFC;
+  }
+  .form-field.full { grid-column: 1/-1; }
+  .form-btn {
+    width: 100%;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 9px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-top: 8px;
+    cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  /* ARROW */
+  .arrow {
+    width: 2px;
+    height: 32px;
+    background: linear-gradient(to bottom, var(--border), var(--teal));
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .arrow::after {
+    content: '▼';
+    position: absolute;
+    bottom: -6px;
+    color: var(--teal);
+    font-size: 11px;
+  }
+
+  /* COLOR SCHEMES */
+  .s1 .step-num { background: #EFF6FF; color: #1D4ED8; }
+  .s1 .step-tag { background: #EFF6FF; color: #1D4ED8; }
+  .s2 .step-num { background: var(--teal-light); color: var(--teal); }
+  .s2 .step-tag { background: var(--teal-light); color: var(--teal); }
+  .s3 .step-num { background: var(--gold-light); color: var(--gold); }
+  .s3 .step-tag { background: var(--gold-light); color: var(--gold); }
+  .s4 .step-num { background: var(--green-light); color: var(--green); }
+  .s4 .step-tag { background: var(--green-light); color: var(--green); }
+  .s5 .step-num { background: #F5F3FF; color: #7C3AED; }
+  .s5 .step-tag { background: #F5F3FF; color: #7C3AED; }
+
+  /* END NODE */
+  .end-node {
+    background: var(--navy);
+    color: white;
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(15,34,64,0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .tip-box {
+    width: 100%;
+    background: var(--gold-light);
+    border: 1.5px solid #FBBF24;
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 0.84rem;
+    color: #92400E;
+    line-height: 1.5;
+  }
+  .tip-box strong { font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div><span class="brand"><span class="brand-dot"></span> Admin Portal · Staff Guide</span></div>
+  <h1>How to Send a Direct<br><span>Onboarding Link</span></h1>
+  <p>Step-by-step guide for staff · admin portal</p>
+</div>
+
+<div class="flow">
+
+  <!-- STEP 1 -->
+  <div class="step-card s1">
+    <div class="step-header">
+      <div class="step-num">01</div>
+      <div class="step-title">Go to Questionnaires</div>
+      <span class="step-tag">Navigate</span>
+    </div>
+    <div class="step-body">
+      <p>In the left sidebar, under <strong>Tools &amp; Services</strong>, click <strong>Questionnaires</strong>.</p>
+      <div class="mockup">
+        <div class="mockup-bar">
+          <div class="dot-row"><div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div></div>
+          <div class="url-bar">admin.portal.com/dashboard/questionnaires</div>
+        </div>
+        <table class="table-mock">
+          <thead><tr><th>NAME</th><th>TYPE</th><th>TREATMENT</th><th>STATUS</th><th>ACTIONS</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="name-link">GLP Microdosing</span></td>
+              <td>Onboarding</td>
+              <td>GLP Microdosing</td>
+              <td><span class="approved">Approved</span></td>
+              <td><div class="action-icons"><div class="icon-btn">🔗</div><div class="icon-btn">📄</div></div></td>
+            </tr>
+            <tr>
+              <td><span class="name-link">ED</span></td>
+              <td>Onboarding</td>
+              <td>ED</td>
+              <td><span class="approved">Approved</span></td>
+              <td><div class="action-icons"><div class="icon-btn">🔗</div><div class="icon-btn">📄</div></div></td>
+            </tr>
+            <tr>
+              <td><span class="name-link">GLP Weight Loss</span></td>
+              <td>Onboarding</td>
+              <td>Weight Loss</td>
+              <td><span class="approved">Approved</span></td>
+              <td><div class="action-icons"><div class="icon-btn">🔗</div><div class="icon-btn">📄</div></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- STEP 2 -->
+  <div class="step-card s2">
+    <div class="step-header">
+      <div class="step-num">02</div>
+      <div class="step-title">Find the Right Questionnaire</div>
+      <span class="step-tag">Select</span>
+    </div>
+    <div class="step-body">
+      <p>Locate the onboarding questionnaire that matches your patient's treatment type (e.g. <strong>GLP Weight Loss</strong>, <strong>ED</strong>, <strong>NAD+</strong>, etc.). Make sure its status shows <strong>Approved</strong>.</p>
+    </div>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- STEP 3 -->
+  <div class="step-card s3">
+    <div class="step-header">
+      <div class="step-num">03</div>
+      <div class="step-title">Click the 🔗 Link Icon</div>
+      <span class="step-tag">Copy Link</span>
+    </div>
+    <div class="step-body">
+      <p>In the <strong>Actions</strong> column on the right side of the row, click the <strong>chain link icon (🔗)</strong>. A tooltip will appear confirming <em>"Copy Questionnaire Link"</em>.</p>
+      <div class="mockup">
+        <table class="table-mock">
+          <thead><tr><th>NAME</th><th>STATUS</th><th style="text-align:right">ACTIONS</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="name-link">GLP Microdosing</span></td>
+              <td><span class="approved">Approved</span></td>
+              <td>
+                <div class="action-icons" style="justify-content:flex-end">
+                  <div class="icon-btn highlight">🔗</div>
+                  <div class="icon-btn">📄</div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="tooltip-mock">🔗 Copy Questionnaire Link</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- STEP 4 -->
+  <div class="step-card s4">
+    <div class="step-header">
+      <div class="step-num">04</div>
+      <div class="step-title">Link Copied to Clipboard!</div>
+      <span class="step-tag">Success</span>
+    </div>
+    <div class="step-body">
+      <p>A <strong>success toast</strong> will appear confirming the link has been copied. The link format will look like this:</p>
+      <div class="success-mock">
+        <div class="success-icon">✅</div>
+        <div class="success-text">
+          <strong>Success</strong>
+          <span>Questionnaire link copied to clipboard</span>
+        </div>
+      </div>
+      <div class="url-mock">https://intake.kinmeds.com/visit/glpMicrodosing</div>
+    </div>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- STEP 5 -->
+  <div class="step-card s5">
+    <div class="step-header">
+      <div class="step-num">05</div>
+      <div class="step-title">Send the Link to Your Patient</div>
+      <span class="step-tag">Send</span>
+    </div>
+    <div class="step-body">
+      <p>Paste and send the copied link to the patient via <strong>text, email, or direct message</strong>. When they open it, they'll land directly on the intake form for their treatment program.</p>
+      <div class="form-mock">
+        <h4>Patient sees → Intake Form</h4>
+        <div class="form-row">
+          <div class="form-field">First Name</div>
+          <div class="form-field">Last Name</div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">Email Address</div>
+          <div class="form-field">Phone Number</div>
+        </div>
+        <button class="form-btn">Create Account</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- TIP -->
+  <div class="tip-box">
+    <span style="font-size:1.2rem">💡</span>
+    <div><strong>Pro Tip:</strong> Each treatment has its own unique link (e.g. <code style="font-family:monospace">/visit/glpMicrodosing</code>, <code style="font-family:monospace">/visit/weightloss</code>). Always make sure you're copying the link from the correct row that matches the patient's program.</div>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- END -->
+  <div class="end-node">
+    ✅ Patient Onboarding Started!
+  </div>
+
+</div>
+
+</body>
+</html>
